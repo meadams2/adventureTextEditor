@@ -1,0 +1,116 @@
+Marianne Adams
+CS120
+Adventure Game Text Editor
+
+Import JSON
+
+Define main():
+	No parameters
+	userChoice = getMenuChoice()
+	if userChoice == 1:
+		getDefaultGame()
+	if userChoice == 2:
+		loadGame("adventureGame.json")
+	if userChoice == 3:
+		saveGame()
+	if userChoice == 4:
+		editNode()
+		editField()
+	if userChoice == 5:
+		playGame()
+		playNode()
+	
+Define getMenuChoice():
+	No parameters
+	Print menu with the following:
+		0)Exit
+		1) Load default game
+		2) Load a game file
+		3) Save the current game
+		4) Edit or add a node
+		5) Play the current game
+	New variable userChoice gets input ("What will you do?)
+	Return userChoice
+Define playGame():
+	Parameters: currentGame, node
+	Extract description, menu1, node1, menu2, node2 from the game
+	
+	keepGoing = True
+	while keepGoing:
+		if currentNode == quit:
+			keepGoing = False
+		else:
+			Run playNode(game, CurrentNode)
+
+Define playNode():
+	Parameters: game data and node
+	Extract description, menu1, node1, menu2, node2 from game
+	Print menu:
+		Description
+	        1. menu1
+		2. menu2
+	Get nodeChoice input.
+	if nodeChoice.isnumeric():
+		if nodeChoice ==1 :
+			newNode = node1
+			currentNode = newNode
+		if nodeChoice == 2:
+			newNode = node2
+			currentnode = newNode
+	Return currentNode
+Define getDefaultGame():
+	game = {
+  "start": [
+    "win or lose",
+    "win",
+    "win",
+    "lose",
+    "lose"
+  ],
+  "win": [
+    "You win",
+    "start over",
+    "start",
+    "quit",
+    "quit"
+  ],
+  "lose": [
+    "You lose",
+    "start over",
+    "start",
+    "quit",
+    "quit"
+  ]
+}
+	print(game)
+	outFile = open ("adventureEditor.json", "w")
+	json.dump (game, outFile)
+	outFile.close()
+	Return game
+Define editNode():
+	Parameters: currentGame, node
+	file = open("adventureEditor.json", "r")
+	print (game)
+	file.close()	
+Define editField():
+	Parameters: currentGame
+	file = open("adventureEditor.json", "r"
+	print (game)
+	file.close()
+	changeChoice = input("Edit or Create?")
+	if changeChoice is edit
+		inFile = open("adventureEditor.json", "w")
+		editChoice = input ("Which field would you like to edit?")
+		field = game[editChoice]
+
+	
+Define saveGame():
+	outFile = open ("adventureEditor.json", "w")
+	json.dump (game, outFile, indent=2)
+	outFile.close()
+	print ("Saved game to adventureEditor.json")
+Define loadGame():
+	file = open("adventureEditor.json", "r")
+	adventureEditor = json.load(file)
+	print (adventureEditor)
+	Close file
