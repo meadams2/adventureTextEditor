@@ -42,6 +42,7 @@ Define playGame():
 		else:
 			Run playNode(game, CurrentNode)
 
+
 Define playNode():
 	Parameters: game data and node
 	Extract description, menu1, node1, menu2, node2 from game
@@ -57,6 +58,8 @@ Define playNode():
 		if nodeChoice == 2:
 			newNode = node2
 			currentnode = newNode
+	else:
+		print("Give me a number, pookie.")
 	Return currentNode
 Define getDefaultGame():
 	game = {
@@ -98,12 +101,16 @@ Define editField():
 	print (game)
 	file.close()
 	changeChoice = input("Edit or Create?")
-	if changeChoice is edit
+	if changeChoice is Edit
 		inFile = open("adventureEditor.json", "w")
 		editChoice = input ("Which field would you like to edit?")
 		field = game[editChoice]
-
-	
+		inFile.close()
+	if changeChoice is Create
+		inFile = open("adventureEditor.json", "a")
+		createField = input("What would you like to add?)
+		field = game[createField]
+		inFile.close()
 Define saveGame():
 	outFile = open ("adventureEditor.json", "w")
 	json.dump (game, outFile, indent=2)
