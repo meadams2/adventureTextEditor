@@ -31,7 +31,7 @@ def main():
         elif userChoice == 5:
             print("Play current game.")
             playGame(game)
-            playNode(game, "start")
+#             playNode(game, "start")
             keepGoing = False
         else:
             print("We've been through this pookie. Quitting game.")
@@ -93,30 +93,31 @@ def playGame(game):
             keepGoing = False
         else:
             currentNode = playNode(game, currentNode)
-    return currentNode
-def playNode(game, nodeKey):
-    currentNode = game[nodeKey]
-    if currentNode in game.keys():
-        (description, menu1, node1, menu2, node2) = game[currentNode]
-        print(f"""{description}
+            
+def playNode(game, currentNodeKey):
+    currentNode = game[currentNodeKey]
+#     if currentNode in game.keys():
+    (description, menu1, node1, menu2, node2) = currentNode
+    print(f"""{description}
     1: {menu1}
     2: {menu2}""")
-        nodeChoice = input("1 or 2?")
-        if nodeChoice.isnumeric():
-            nodeChoice = int(nodeChoice)
-            if nodeChoice == 1:
-                nextNode = node1
-                currentNode = newNode
-            elif nodeChoice == 2:
-                nextNode = node2
-            else:
-               print("You bovine. Enter 1 or 2.")
-               nextNode = currentNode
+    nodeChoice = input("1 or 2?")
+    if nodeChoice.isnumeric():
+        nodeChoice = int(nodeChoice)
+        if nodeChoice == 1:
+            nextNode = node1
+            currentNode = newNode
+        elif nodeChoice == 2:
+            nextNode = node2
         else:
-            print("Give me a number, pookie.")
-    else:
-        print("Babes. I don't know what that is. Are you on crack?")
-        nextNode = "quit"
+            print("You bovine. Enter 1 or 2.")
+            nextNode = currentNode
+#     else:
+#         print("Give me a number, pookie.")
+#         nextNode = "quit"
+#     else:
+#         print("Babes. I don't know what that is. Are you on crack?")
+#         nextNode = "quit"
     return nextNode
 
 main()
