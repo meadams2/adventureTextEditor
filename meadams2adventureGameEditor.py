@@ -11,27 +11,31 @@ def main():
         if userChoice == 0:
             print("Quit")
             keepGoing = False
+            
         elif userChoice == 1:
             print("Loaded default game")
-            game = loadGame(game)
-            keepGoing = False
+            print(game)
+            userChoice = getMenuChoice()
         elif userChoice == 2:
             loadGame("game.json")
             print("Loaded game.")
-            keepGoing = False
+            userChoice = getMenuChoice()
+            
         elif userChoice == 3:
             print("Save game.")
             saveGame(game)
-            keepGoing = False
+            userChoice = getMenuChoice()
+            
         elif userChoice == 4:
             print("Edit or add a node")
-#             editField()
-#             editNode()
-            keepGoing = False
+            editNode(game)
+            userChoice = getMenuChoice()
+            
         elif userChoice == 5:
             print("Play current game.")
             playGame(game)
-            keepGoing = False
+            userChoice = getMenuChoice()
+            
         else:
             print("We've been through this pookie. Quitting game.")
             keepGoing = False
@@ -79,6 +83,7 @@ def saveGame(currentGame):
     """saves game to json file"""
     outFile = open("game.json", "w")
     json.dump(currentGame, outFile, indent=2)
+    print(json.dumps(currentGame, outFile, indent=2))
     outFile.close()
     print("Saved game data to game.json.")
     
@@ -124,6 +129,41 @@ def playNode(game, currentNodeKey):
     else:
         print("Babes. I don't know what that is. Are you on crack?")
         nextNode = "quit"
+        
     return nextNode
 
+def editNode(game):
+    """lists all current node content. gets node name. return edited newNode"""
+    print("Current status of game:")
+    print(json.dumps(game, indent=2))
+    print("Existing node names: ")
+    for nodeName in game.keys():
+        print(f" {nodeName}")
+    newNodeName = input("Name of node to edit or create?")
+    if newNodeName in game.keys():
+        newContent = game[newNodeName]
+    else:
+        newContent = ["","","","",""]
+    (desc, menu1, node1, menu2, node2) = newContent
+    newDesc = editField("description", desc)
+    newMenu1 = editField("Menu 1", menu1)
+    newNode1 = editField("Node 1", node1)
+    newMenu2 = editField("Menu 2", menu2)
+    newNode2 = editField("Node 2", node2)
+    
+    game[newNodeName] = [newDesc, newMenu1, newNode1, newMenu2, newNode2]
+    
+    return game
+
+def editField(prompt, currentVal):
+    """gets a field name
+       print field current value
+       if user presses 'enter' immediately-retain current value
+       otherwise: use new value"""
+    newVal = input (f"{prompt} ({currentVal}): ")
+    if newVal == "":
+        newVal = currentVal
+    
+    return newVal
+    
 main()

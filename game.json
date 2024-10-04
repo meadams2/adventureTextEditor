@@ -20,4 +20,26 @@
     "quit",
     "quit"
   ]
+}{
+  "start": [
+    "win or lose",
+    "win",
+    "win",
+    "lose",
+    "lose"
+  ],
+  "win": [
+    "You win",
+    "start over",
+    "start",
+    "quit",
+    "quit"
+  ],
+  "lose": [
+    "You lose",
+    "start over",
+    "start",
+    "quit",
+    "quit"
+  ]
 }
