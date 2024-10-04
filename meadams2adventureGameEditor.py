@@ -82,8 +82,8 @@ def getDefaultGame():
 def saveGame(currentGame):
     """saves game to json file"""
     outFile = open("game.json", "w")
-    json.dump(currentGame, outFile, indent=2)
-    print(json.dumps(currentGame, outFile, indent=2))
+    json.dump(game, outFile, indent=2)
+    print(json.dumps(currentGame, indent=2))
     outFile.close()
     print("Saved game data to game.json.")
     
@@ -167,3 +167,6 @@ def editField(prompt, currentVal):
     return newVal
     
 main()
+"""I about threw my laptop out of the window because of a bug that took me 3 seconds to fix.
+The problem: I had an extra data set in my json file--I erased the extra data but forgot to save.
+Saved it, and now the program works"""
