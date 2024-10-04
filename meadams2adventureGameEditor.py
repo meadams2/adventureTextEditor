@@ -107,7 +107,7 @@ def playGame(game):
 def playNode(game, currentNodeKey):
     """plays a node taking game data and currentNodeKey"""
     currentNode = game[currentNodeKey]
-    if currentNode in game.keys():
+    if currentNodeKey in game.keys():
         (description, menu1, node1, menu2, node2) = currentNode
         print(f"""{description}
     1: {menu1}
