@@ -23,6 +23,7 @@ def main():
             
         elif userChoice == 3:
             print("Save game.")
+            game = game
             saveGame(game)
             userChoice = getMenuChoice()
             
@@ -82,7 +83,7 @@ def getDefaultGame():
 def saveGame(currentGame):
     """saves game to json file"""
     outFile = open("game.json", "w")
-    json.dump(game, outFile, indent=2)
+    json.dump(currentGame, outFile, indent=2)
     print(json.dumps(currentGame, indent=2))
     outFile.close()
     print("Saved game data to game.json.")
@@ -117,9 +118,10 @@ def playNode(game, currentNodeKey):
             nodeChoice = int(nodeChoice)
             if nodeChoice == 1:
                 nextNode = node1
-                currentNode = newNode
+                currentNode = nextNode
             elif nodeChoice == 2:
                 nextNode = node2
+                currentNode = nextNode
             else:
                 print("You bovine. Enter 1 or 2.")
                 nextNode = currentNode

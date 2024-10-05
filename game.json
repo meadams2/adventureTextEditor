@@ -1,10 +1,10 @@
 {
   "start": [
-    "win or lose",
-    "win",
-    "win",
-    "lose",
-    "lose"
+    "s",
+    "w",
+    "w",
+    "l",
+    "l"
   ],
   "win": [
     "You win",
